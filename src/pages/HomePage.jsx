@@ -1,5 +1,6 @@
 import React from 'react'
 import HomeContent from '../components/HomeContent'
+import HomeSearchBar from '../components/HomeSearchBar'
 import SideBar from '../components/SideBar'
 
 const HomePage = () => {
@@ -10,6 +11,9 @@ const HomePage = () => {
         </div>
         <div className='w-7/12'>
             <HomeContent />
+        </div>
+        <div className="w-3/12">
+          <HomeSearchBar />
         </div>
     </div>
   )

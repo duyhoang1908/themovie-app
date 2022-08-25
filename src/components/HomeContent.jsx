@@ -5,7 +5,7 @@ import HomeTVshow from "./HomeTVshow";
 const HomeContent = () => {
   const [isTVshow, setTVshow] = useState(true);
   return (
-    <div className="py-[28px] px-[15px] border-r border-[#808080]">
+    <div className="py-[28px] px-[15px]">
       {isTVshow ? (
         <HomeTVshow isTVshow={isTVshow} setTVshow={setTVshow} />
       ) : (

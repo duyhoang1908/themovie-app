@@ -6,7 +6,7 @@ import logo from "../media/images/logo.png";
 
 const SideBar = () => {
   return (
-    <div className="pt-[40px] pl-[32px] border-r border-[#808080] overflow-y-auto">
+    <div className="sidebar h-[100vh] pt-[40px] pl-[32px] overflow-y-auto">
       <Link to="/">
         <img src={logo} alt="" className="w-[100px]" />
       </Link>
@@ -15,7 +15,7 @@ const SideBar = () => {
         <div className="flex flex-col mt-8 ml-4">
           <Link
             to="/"
-            className="flex items-center py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+            className="flex items-center py-[10px] text-[20px] text-[#5719FF] font-light hover:text-[#5719FF] hover:font-normal duration-300"
           >
             <div className="mr-[20px]">
               <FaHome />
@@ -34,7 +34,7 @@ const SideBar = () => {
             <p>Explore</p>
           </Link>
           <Link
-            to="/"
+            to="/search"
             className="flex items-center py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
           >
             <div className="mr-[20px]">

@@ -2,19 +2,17 @@ import React from "react";
 import {Link} from "react-router-dom"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaStar, FaPlay } from "react-icons/fa";
-
-import "swiper/css";
 import { Autoplay } from "swiper";
 
+import "swiper/css";
+
 const BannerSlider = ({ data }) => {
-  console.log(data);
+  
   return (
-    <div className="rounded-lg overflow-hidden mt-4">
+    <div className="rounded-lg overflow-hidden">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
         modules={[Autoplay]}
         autoplay={1}
       >
@@ -56,7 +54,7 @@ const BannerSlider = ({ data }) => {
               </div>
 
               <div className="hidden group-hover:flex absolute top-0 right-0 left-0 w-[100%] h-[100%] z-10">
-                <Link to="/video" className="flex m-auto text-white bg-gradient-to-r from-[#5757f5] to-[#783f8a] w-[70px] h-[70px] rounded-[50%]">
+                <Link to={`/movie/${film.id}/watch`} className="flex m-auto text-white bg-gradient-to-r from-[#5757f5] to-[#783f8a] w-[70px] h-[70px] rounded-[50%]">
                     <div className="m-auto"><FaPlay /></div>
                 </Link>
               </div>
