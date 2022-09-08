@@ -2,9 +2,8 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 const FilmContent = ({ film }) => {
-  console.log(film);
   return (
-    <div>
+    <div className="h-[100vh] overflow-y-auto pb-16 home__container">
       <div className="relative h-0 pb-[56.25%]">
         {film.id && (
           <iframe

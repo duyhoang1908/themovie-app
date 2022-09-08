@@ -1,13 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaStar, FaPlay } from "react-icons/fa";
 import { Autoplay } from "swiper";
 
 import "swiper/css";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
 
 const BannerSlider = ({ data }) => {
-  
   return (
     <div className="rounded-lg overflow-hidden">
       <Swiper
@@ -18,8 +21,8 @@ const BannerSlider = ({ data }) => {
       >
         {data.map((film) => (
           <SwiperSlide key={film.id}>
-            <div className="w-[100%] relative cursor-pointer group max-h-[410px]">
-              <img
+            <div className="w-[100%] relative cursor-pointer group max-h-[410px] blur-0">
+              <LazyLoadImage
                 src={`https://image.tmdb.org/t/p/w1280/${film.backdrop_path}`}
                 alt=""
                 className="w-[100%] h-[100%] object-contain"
@@ -41,21 +44,32 @@ const BannerSlider = ({ data }) => {
                   Release Date: {film.release_date}
                 </div>
 
-                {film.adult || <div className="inline-block mt-3 text-red-600 border border-red-600 px-3 py-1 rounded-2xl">18 +</div>}
+                {film.adult || (
+                  <div className="inline-block mt-3 text-red-600 border border-red-600 text-xs md:text-base px-3 py-1 rounded-2xl">
+                    18 +
+                  </div>
+                )}
 
                 <div className="flex items-center  mt-4">
-                    <div className="text-white mr-4">Language:</div>
-                    <div className="inline-block text-[#989898] border border-[#989898] px-3 py-1 rounded-2xl">{film.original_language}</div>
+                  <div className="text-white mr-4 text-sm md:text-base">Language:</div>
+                  <div className="inline-block text-[#989898] text-xs md:text-base border border-[#989898] px-3 py-1 rounded-2xl">
+                    {film.original_language}
+                  </div>
                 </div>
 
-                <div className=" mt-3 text-base text-[#989898]">
+                <div className="hidden md:block mt-3 text-base text-[#989898]">
                   {film.overview}
                 </div>
               </div>
 
               <div className="hidden group-hover:flex absolute top-0 right-0 left-0 w-[100%] h-[100%] z-10">
-                <Link to={`/movie/${film.id}/watch`} className="flex m-auto text-white bg-gradient-to-r from-[#5757f5] to-[#783f8a] w-[70px] h-[70px] rounded-[50%]">
-                    <div className="m-auto"><FaPlay /></div>
+                <Link
+                  to={`/movie/${film.id}/watch`}
+                  className="flex m-auto text-white bg-gradient-to-r from-[#5757f5] to-[#783f8a] w-[50px] h-[50px] rounded-[50%]"
+                >
+                  <div className="m-auto">
+                    <FaPlay />
+                  </div>
                 </Link>
               </div>
             </div>

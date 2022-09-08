@@ -6,7 +6,7 @@ import MovieMedia from "./MovieMedia";
 import MovieRating from "./MovieRating";
 
 const MovieDetailContent = ({ movie, reviews, credits, data }) => {
-  
+
   return (
     <div className="">
       <div className="relative">
@@ -19,9 +19,9 @@ const MovieDetailContent = ({ movie, reviews, credits, data }) => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt=""
-            className="w-[185px]"
+            className="w-[140px] md:w-[185px] rounded-xl md:rounded-none"
           />
-          <div className="flex-grow md:ml-14 ml-6 mt-6 md:mt-0">
+          <div className="hidden md:flex-grow md:ml-14 ml-6 mt-6 md:mt-0">
             <div className="md:h-28 flex items-end">
               <h1 className=" text-white text-[45px] font-bold leading-tight ">
                 {movie.title}
@@ -43,20 +43,20 @@ const MovieDetailContent = ({ movie, reviews, credits, data }) => {
               <div>
                 <FaPlay />
               </div>
-              <div className="text-lg font-medium">WATCH</div>
+              <div className="text-sm md:text-lg font-medium">WATCH</div>
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="flex z-20 relative flex-col md:flex-row mt-32 md:mt-0">
-        <div className="w-2/12 mt-20 md:border-r border-[rgb(51,51,53)] pt-16">
+      <div className="flex z-20 relative flex-col md:flex-row md:mt-0">
+        <div className="w-full md:w-2/12 mt-5 md:mt-20 md:border-r border-[rgb(51,51,53)] pt-16">
             <MovieRating movie={movie}/>
         </div>
-        <div className="w-7/12 flex-grow min-h-[500px] md:border-r border-[rgb(51,51,53)] md:px-16 px-5 md:py-7 pt-40">
+        <div className="w-full md:w-7/12 flex-grow min-h-[500px] md:border-r border-[rgb(51,51,53)] md:px-16 px-5 md:py-7 pt-10">
             <MovieDescription movie={movie} reviews={reviews} credits={credits}/>
         </div>
-        <div className="shrink-0 w-3/12 px-6 pt-6">
+        <div className="shrink-0 w-full md:w-3/12 px-6 pt-6">
             <MovieMedia movie={movie} data={data}/>
         </div>
       </div>

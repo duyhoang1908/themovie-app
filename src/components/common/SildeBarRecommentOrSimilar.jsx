@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getRecommendations, getSimilar } from "../../Api";
 import Loader from "../Loader";
 import SearchInput from "./SearchInput";
+import Skeleton from "./Skeleton";
 
 const SildeBarRecommentOrSimilar = ({type, id}) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -30,12 +31,35 @@ const SildeBarRecommentOrSimilar = ({type, id}) => {
   return (
     <div>
       {isLoading ? (
-        <Loader />
+        <div>
+          <SearchInput />
+          <div className="flex mb-6 mt-5">
+            <Skeleton className="h-4 w-[100px]"/>
+          </div>
+          <ul className="flex flex-col gap-5">
+                {Array(3).fill(0).map((item, index) => (
+                  <li key={index}>
+                    <div className="flex gap-3">
+                      <div className="shrink-0 max-w-[100px] w-full">
+                        <Skeleton className="w-full h-[150px]"/>
+                      </div>
+                      <div className="flex flex-col justify-around">
+                        <Skeleton className="w-[150px] h-5"/>
+                        <Skeleton className="w-16 h-5"/>
+                        <Skeleton className="w-10 h-5"/>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+        </div>
       ) : (
         <div>
-          {data && (
+          {data.length?(
             <div>
+              <div className="w-full hidden md:block">
               <SearchInput />
+              </div>
               <div className="flex">
                 <p className="mb-6 mt-4 text-xl font-medium flex justify-between items-center text-white">
                   {type}
@@ -57,7 +81,7 @@ const SildeBarRecommentOrSimilar = ({type, id}) => {
                         <p className="text-white mb-3 text-lg">
                           {movie.original_title}
                         </p>
-                        <p className="mb-8">{movie.release_date}</p>
+                        <p className="mb-8 text-[#989898]">{movie.release_date}</p>
                         <div className="inline-flex gap-2 items-center px-3 py-[2px] rounded-full text-[#3D5BC0] border border-[#3D5BC0] text-sm">
                           <span>{movie.vote_average.toFixed(1)}</span>
                           <div>
@@ -75,7 +99,10 @@ const SildeBarRecommentOrSimilar = ({type, id}) => {
                 </div>
               </Link>
             </div>
-          )}
+          ):<div>
+            <SearchInput />
+              <p className="text-white text-center mt-5">No {type}</p>
+            </div>}
         </div>
       )}
     </div>

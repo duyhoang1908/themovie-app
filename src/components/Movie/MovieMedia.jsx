@@ -2,7 +2,7 @@ import React from "react";
 
 const MovieMedia = ({ data }) => {
   return (
-    <div className="shrink-0 md:max-w-[300px] w-full px-2 pt-2">
+    <div className="shrink-0 md:max-w-[300px] w-full md:px-2 pt-2">
       <p className="text-white font-medium text-lg mb-5">MEDIA</p>
       <ul className="flex flex-col md:gap-[30px] gap-6">
         {data &&

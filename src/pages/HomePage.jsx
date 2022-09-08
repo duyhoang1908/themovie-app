@@ -5,14 +5,14 @@ import SideBar from '../components/SideBar'
 
 const HomePage = () => {
   return (
-    <div className='flex'>
-        <div className='w-2/12'>
-            <SideBar />
+    <div className='md:flex h-[100vh] overflow-hidden'>
+        <div className='hidden md:block md:w-2/12'>
+            <SideBar category="home"/>
         </div>
-        <div className='w-7/12'>
+        <div className='w-full md:w-7/12'>
             <HomeContent />
         </div>
-        <div className="w-3/12">
+        <div className="hidden md:block md:w-3/12">
           <HomeSearchBar />
         </div>
     </div>

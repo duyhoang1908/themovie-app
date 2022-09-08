@@ -1,0 +1,1 @@
+export const explore = state => state.explore.list

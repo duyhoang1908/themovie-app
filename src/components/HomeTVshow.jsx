@@ -5,21 +5,20 @@ import {
   getTrendingFilms,
   getUpComingFilm,
 } from "../Api";
+import { useCurrentViewportView } from "../hooks/useViewportView";
 import defaultAvatar from "../media/images/defaultAvatar.jpg";
 import BannerSlider from "./BannerSlider";
-import Loader from "./Loader";
+import Skeleton from "./common/Skeleton";
 import Slider from "./Slider";
-import { useDispatch } from "react-redux";
-import { exploreSlice } from "../store/Slice/exploreSlice";
 
 const HomeTVshow = ({ isTVshow, setTVshow }) => {
-  const dispatch = useDispatch();
-
   const [popularFilms, setPopularFilms] = useState([]);
   const [topRateFilms, setTopRateFilms] = useState([]);
   const [upCommingFilms, seUpCommingFilms] = useState([]);
   const [trendingFilms, setTrendingFilms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const {isMobile} = useCurrentViewportView()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,8 +31,7 @@ const HomeTVshow = ({ isTVshow, setTVshow }) => {
       setPopularFilms(data.results);
       seUpCommingFilms(upcoming.results);
       setTrendingFilms(trending.results);
-      
-      8
+
       setIsLoading(false);
     };
 
@@ -43,7 +41,85 @@ const HomeTVshow = ({ isTVshow, setTVshow }) => {
   return (
     <div className="h-[100vh] overflow-y-auto home__container">
       {isLoading ? (
-        <Loader />
+        <div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center border-b border-[rgb(58,57,57)]">
+              <div
+                className="text-base md:text-xl pb-3 border-b-2 border-white mr-8 hover:cursor-pointer text-white font-medium"
+                onClick={() => setTVshow(!isTVshow)}
+              >
+                TV Show
+              </div>
+              <div
+                className="text-base md:text-xl pb-3 hover:cursor-pointer text-[#989898] font-light"
+                onClick={() => setTVshow(!isTVshow)}
+              >
+                Movie
+              </div>
+            </div>
+            <div className="flex items-center text-[18px] text-[#989898]">
+              <p>Anonymous</p>
+              <div className="w-[28px] h-[28px] ml-6 object-cover rounded-[50%] overflow-hidden">
+                <img src={defaultAvatar} alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <Skeleton className="w-full h-[220px]" />
+          </div>
+
+          <div className="mt-4 md:mt-10">
+            <div className="text-xl text-white font-medium tracking-wider mb-3">
+              <Skeleton className="h-4 w-28" />
+            </div>
+            <div className="mt-5 md:mt-10">
+              <div className="flex justify-between">
+                {Array(isMobile?2:4)
+                  .fill(0)
+                  .map((item, index) => (
+                    <div key={index} className="w-[48%] md:w-[22%]">
+                      <Skeleton className="w-full h-[250px] md:h-[320px]" />
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 md:mt-10">
+            <div className="text-xl text-white font-medium tracking-wider mb-3">
+              <Skeleton className="h-4 w-28" />
+            </div>
+            <div className="mt-5 md:mt-10">
+              <div className="flex justify-between">
+                {Array(isMobile?2:4)
+                  .fill(0)
+                  .map((item, index) => (
+                    <div key={index} className="w-[48%] md:w-[22px]">
+                      <Skeleton className="w-full h-[250px] md:h-[320px]" />
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 md:mt-10">
+            <div className="text-xl text-white font-medium tracking-wider mb-3">
+              <Skeleton className="h-4 w-28" />
+            </div>
+            <div className="mt-5 md:mt-10">
+              <div className="flex justify-between">
+                {Array(isMobile?2:4)
+                  .fill(0)
+                  .map((item, index) => (
+                    <div key={index} className="w-[48%] md:w-[22px]">
+                      <Skeleton className="w-full h-[250px] md:h-[320px]" />
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         <div>
           <div className="flex justify-between items-center">

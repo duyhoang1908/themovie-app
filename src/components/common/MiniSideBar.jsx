@@ -13,7 +13,7 @@ import logo from "../../media/images/logo.png";
 import defaultAvatar from "../../media/images/defaultAvatar.jpg";
 
 
-const SearchSideBar = () => {
+const MiniSideBar = ({category}) => {
   return (
     <div className="sidebar flex flex-col justify-between items-center h-[100vh] py-[32px] overflow-y-auto">
       <Link to="/">
@@ -24,22 +24,25 @@ const SearchSideBar = () => {
           <Link
             to="/"
             className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+            style={{color:category==="home"?"#5179FF":"#fff"}}
           >
             <div className="">
               <FaHome />
             </div>
           </Link>
           <Link
-            to="/"
+            to="/explore"
             className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+            style={{color:category==="explore"?"#5179FF":"#fff"}}
           >
             <div className="">
               <FaDiceD6 />
             </div>
           </Link>
           <Link
-            to="/"
-            className="py-[10px] text-[20px] text-[#5179FF] font-light hover:text-[#5179FF] hover:font-normal duration-300"
+            to="/search"
+            className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+            style={{color:category==="search"?"#5179FF":"#fff"}}
           >
             <div className="">
               <FaSearch />
@@ -47,16 +50,18 @@ const SearchSideBar = () => {
           </Link>
 
           <Link
-          to="/"
+          to="/bookmarked"
           className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+          style={{color:category==="bookmarked"?"#5179FF":"#fff"}}
         >
           <div className="">
             <FaBookOpen />
           </div>
         </Link>
         <Link
-          to="/"
+          to="/history"
           className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+          style={{color:category==="history"?"#5179FF":"#fff"}}
         >
           <div className="">
             <FaClock />
@@ -64,8 +69,9 @@ const SearchSideBar = () => {
         </Link>
 
         <Link
-          to="/"
+          to="/profile"
           className="py-[10px] text-[20px] font-light hover:text-white hover:font-normal duration-300"
+          style={{color:category==="profile"?"#5179FF":"#fff"}}
         >
           <div className="">
             <FaUserAlt />
@@ -81,4 +87,4 @@ const SearchSideBar = () => {
   );
 };
 
-export default SearchSideBar;
+export default MiniSideBar;
